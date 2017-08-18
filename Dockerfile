@@ -101,7 +101,7 @@ USER postgres
 
 # Expose the PostgreSQL port
 
-EXPOSE 5432 5433
+EXPOSE 5432
 
 
 
