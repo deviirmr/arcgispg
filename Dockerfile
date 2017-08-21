@@ -90,11 +90,17 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.5/main/postgresql.conf
 
 
 
-#COPY THE ST geometry file to lib
-#RUN sudo chmod 777 /usr/lib/postgresql/9.4/lib/
+#COPY THE ST geometry file (and other associated files to lib
+#RUN sudo chmod 777 /usr/lib/postgresql/9.5/lib/
 USER root
 RUN sudo cp /myapp/STGeometry/stgeometry/windows/postgres/9.5/st_geometry.dll /usr/lib/postgresql/9.5/lib/
+USER postgres
+
+USER root
 RUN sudo cp /myapp/STGeometry/stgeometry/windows/postgres/9.5/pgsqlengine.dll /usr/lib/postgresql/9.5/lib/
+USER postgres
+
+USER root
 RUN sudo cp /myapp/STGeometry/stgeometry/windows/postgres/9.5/libst_raster_pg.dll /usr/lib/postgresql/9.5/lib/
 USER postgres
 
